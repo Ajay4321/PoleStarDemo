@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    // Creating database
     func setupDatabase(){
         let dbFolderPath = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true)[0].appending("/Database")
         let dbPath = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true)[0].appending("/Database/Book.db")

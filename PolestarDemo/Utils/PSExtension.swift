@@ -8,6 +8,8 @@
 import UIKit
 
 var imageCache = NSCache<AnyObject, AnyObject>()
+
+// Download image from url and stored in imageCache
 extension UIImageView {
     func load(urlString : String) {
         
@@ -31,6 +33,7 @@ extension UIImageView {
     }
 }
 
+// Toast
 func showToast(controller: UIViewController, message: String, duration: Double){
     let alert = UIAlertController(title: "PoleStar Dialog", message: message, preferredStyle: .alert)
     alert.view.backgroundColor = UIColor.black
@@ -43,6 +46,7 @@ func showToast(controller: UIViewController, message: String, duration: Double){
     }
 }
 
+// Validating Search text
 func isValidString(string: String) -> Bool{
     let cs = CharacterSet(charactersIn: PSUrlConstants.BookSearchAcceptableCharactes).inverted
             let filtered: String = (string.components(separatedBy: cs) as NSArray).componentsJoined(by: "")

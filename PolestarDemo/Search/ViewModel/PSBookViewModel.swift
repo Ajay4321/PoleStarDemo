@@ -36,12 +36,16 @@ class PSBookViewModel: NSObject {
         
         let dbObject = PSDBHelper.shared
         let results =  dbObject.searchBook(searchString: searchText)
+    // Checks Results from database should be greater than zero, then will not save and show from database.
         if results.count > 0{
             self.fetchData(book: results, searchString: searchText, shouldSave: false)
         } else {
+   // Get results from api
             bookService.getBooks(queryString: searchText) { [weak self] success, model, error in
                 if success, let books = model {
+  // If search results have more value than 10 then filters top 10 results
                     let filterArray = books.count >= 10 ? Array(books[0...9]) : books
+  // if Search results not matching with search string
                     self?.searchResult = filterArray.count == 0 ? .NotFound : .Found
                     self?.fetchData(book: filterArray, searchString: searchText, shouldSave: true)
                 } else {
@@ -53,6 +57,8 @@ class PSBookViewModel: NSObject {
         
     }
     
+    // Based on shouldSave condition it will perform action for save in database
+    // Creates Array of PSBookCellModel from Books Array
     func fetchData(book: Books, searchString: String, shouldSave: Bool) {
         self.books = book // Cache
         var vms = [PSBookCellModel]()

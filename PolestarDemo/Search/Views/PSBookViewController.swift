@@ -19,7 +19,7 @@ class PSBookViewController: UIViewController {
         PSBookViewModel()
     }()
     
-    var searchActive : Bool = false
+    var searchActive : Bool = false 
     var searchString: String = ""
     var lastSearchString: String = ""
     
@@ -34,10 +34,13 @@ class PSBookViewController: UIViewController {
     
     func performSearch() {
         self.searchBar.resignFirstResponder()
-        
+// Checks search should not be active.
+// search bar string should have a value.
         if !searchActive && !self.searchString.isEmpty {
             let isValid = isValidString(string: self.searchString)
+// Checks search string should be valid
             if isValid {
+// Checks last searched string should not have same value from current search string
                 if self.lastSearchString != self.searchString {
                     self.lastSearchString = self.searchString
                     self.indicatorView.startAnimating()

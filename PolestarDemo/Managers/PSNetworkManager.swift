@@ -11,6 +11,7 @@ protocol PolestarProtocol {
     func getBooks(queryString: String,completion: @escaping (_ success: Bool, _ results: Books?, _ error: String?) -> ())
 }
 
+// Fetch results from api
 class PSNetworkManager: PolestarProtocol {
     func getBooks(queryString: String, completion: @escaping (Bool, Books?, String?) -> ()) {
         PSHttpRequestHelper().GET(url: PSUrlConstants.BookSearchBaseURL, params: ["q": queryString], httpHeader: .application_json) { success, data in

@@ -33,6 +33,7 @@ class PSDBHelper: NSObject {
     }
     
     //MARK: Activity
+    // Top 10 results from api saved in database based on search string.
     func insertBookResult(book : Doc, searchString: String) {
     let insertStatementString = "INSERT INTO book_entry (title, authorName, publishDate, imageUrl, searchString) VALUES (?, ?, ?, ?, ?)"
 
@@ -58,6 +59,7 @@ class PSDBHelper: NSObject {
         sqlite3_finalize(insertStatement)
     }
     
+    // Search results from database based on search string
     func searchBook(searchString: String) -> [Doc] {
         let queryStatementString = NSString.init(format: "SELECT * FROM book_entry where searchString = '%@'", searchString)
         var allBooks : [Doc] = []

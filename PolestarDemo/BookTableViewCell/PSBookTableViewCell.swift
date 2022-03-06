@@ -21,7 +21,7 @@ class PSBookTableViewCell: UITableViewCell {
             bookTitle.text = bookCellModel?.title
             bookAuthor.text = bookCellModel?.authorName
             publishedDate.text = bookCellModel?.publish_date
-            
+    // Showing image from url
             if let url =  bookCellModel?.imageUrl {
                 if url.count > 0{
                     let formattedUrl = NSString.init(format:"\(PSUrlConstants.BookCoverBaseURL)%@-M.jpg" as NSString, url)
@@ -29,6 +29,7 @@ class PSBookTableViewCell: UITableViewCell {
                     self.bookCover.load(urlString: imgUrl.absoluteString)
                 }
             } else {
+                // Showing placeholder image if imageUrl have no values or null.
                 self.bookCover.image = UIImage(named: "ps_no_image")
             }
         }
