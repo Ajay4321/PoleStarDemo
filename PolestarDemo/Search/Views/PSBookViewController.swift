@@ -19,7 +19,7 @@ class PSBookViewController: UIViewController {
         PSBookViewModel()
     }()
     
-    var searchActive : Bool = false 
+    var searchActive : Bool = false
     var searchString: String = ""
     var lastSearchString: String = ""
     
@@ -32,15 +32,15 @@ class PSBookViewController: UIViewController {
         self.performSearch()
     }
     
+    /* Checks search should not be active.
+     Search bar string should have a value.
+     Checks search string should be valid.
+     Checks last searched string should not have same value from current search string*/
     func performSearch() {
         self.searchBar.resignFirstResponder()
-// Checks search should not be active.
-// search bar string should have a value.
         if !searchActive && !self.searchString.isEmpty {
             let isValid = isValidString(string: self.searchString)
-// Checks search string should be valid
             if isValid {
-// Checks last searched string should not have same value from current search string
                 if self.lastSearchString != self.searchString {
                     self.lastSearchString = self.searchString
                     self.indicatorView.startAnimating()
@@ -102,8 +102,8 @@ extension PSBookViewController: UISearchBarDelegate {
         self.searchString = searchText
     }
     
+    // Allowed only 30 character as defined in BookSearchAcceptableCharactes
     func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        
         let totalCharacters = (searchBar.text?.appending(text).count ?? 0) - range.length
         return totalCharacters <= 30
     }
