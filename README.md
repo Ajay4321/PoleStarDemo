@@ -3,6 +3,7 @@
 Used MVVM design pattern for this demo.
 
 Created Landing page where search input available with "Get Books" button on right navigation item.
+User can also get search result from tap of "Search" in keyboard.
 
 # Below conditions i have checked for input validation:
 
